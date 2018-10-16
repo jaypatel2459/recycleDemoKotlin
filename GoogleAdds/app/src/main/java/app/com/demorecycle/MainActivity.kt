@@ -1,7 +1,10 @@
 package app.com.demorecycle
 
 import android.app.Activity
+import android.graphics.Color
+import android.graphics.PorterDuff
 import android.os.Bundle
+import android.support.v4.content.ContextCompat
 import android.support.v7.widget.GridLayoutManager
 import android.support.v7.widget.LinearLayoutManager
 import app.com.demorecycle.adapters.AnimalAdapter
@@ -91,9 +94,14 @@ class MainActivity : Activity() {
                     }
                 }
             }
+            actionBtn.setImageDrawable(ContextCompat.getDrawable(this,R.drawable.ic_list))
+            actionBtn.drawable.setColorFilter(Color.WHITE, PorterDuff.Mode.SRC_ATOP)
         }else{
             // You can set linear layout here
             rv_animal_list.layoutManager = LinearLayoutManager(this)
+            actionBtn.setImageDrawable(ContextCompat.getDrawable(this,R.drawable.ic_grid))
+            actionBtn.drawable.setColorFilter(Color.WHITE, PorterDuff.Mode.SRC_ATOP)
+
         }
     }
 }
