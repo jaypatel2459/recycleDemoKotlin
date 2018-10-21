@@ -7,11 +7,15 @@ import android.view.View
 import android.view.ViewGroup
 import app.com.demorecycle.R
 import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.AdView
 import kotlinx.android.synthetic.main.add_list_item.view.*
 import kotlinx.android.synthetic.main.animal_list_item.view.*
 
 
 class AnimalAdapter(private val items: ArrayList<String>, private val context: Context) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+
+//    val adRequest = AdRequest.Builder().build()
+//    val adView = AdView(context)
 
     private var ItemView = 1
     private var AddView = 2
@@ -51,8 +55,15 @@ class AnimalAdapter(private val items: ArrayList<String>, private val context: C
             (holder as ViewHolder).tvAnimalType.text = items.get(position)
         } else if (getItemViewType(position) == AddView) {
 
+
             val adRequest = AdRequest.Builder().build()
             (holder as ViewHolderAdd).adView.loadAd(adRequest)
+//            val ad = adView
+//            ad.removeAllViews()
+//            ad.adUnitId = context.getString(R.string.add_unit_id_1)
+//            ad.adUnitId
+//            ad.loadAd(adRequest)
+//            (holder as ViewHolderAdd).clMain.addView(ad)
         }
     }
 }
@@ -64,4 +75,5 @@ class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
 class ViewHolderAdd(view: View) : RecyclerView.ViewHolder(view) {
     val adView = view.adView!!
+    val clMain = view.clMain!!
 }
